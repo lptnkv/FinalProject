@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.Adapters.FolderAdapter;
-import com.example.finalproject.Entities.Folder;
-import com.example.finalproject.FolderViewModel;
+import com.example.finalproject.Database.Entities.Folder;
+import com.example.finalproject.ViewModel.FolderViewModel;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.databinding.FoldersFragmentBinding;
 

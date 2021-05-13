@@ -9,12 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.finalproject.Entities.Card;
-import com.example.finalproject.Entities.Folder;
+import com.example.finalproject.Database.Entities.Card;
+import com.example.finalproject.Database.Entities.Folder;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.databinding.AddCardDialogBinding;
-
-import java.util.ArrayList;
 
 public class AddCardDialog extends DialogFragment {
     AddCardDialogBinding binding;

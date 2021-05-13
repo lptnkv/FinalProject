@@ -1,11 +1,9 @@
-package com.example.finalproject.Fabrics;
+package com.example.finalproject.ObjectModels.Fabrics;
 
-import com.example.finalproject.Entities.Card;
-import com.example.finalproject.Entities.Folder;
-import com.example.finalproject.Models.Difficulty;
-import com.example.finalproject.Models.ITask;
-import com.example.finalproject.Models.YesNoTask;
-import com.example.finalproject.Models.Type;
+import com.example.finalproject.Database.Entities.Card;
+import com.example.finalproject.Database.Entities.Folder;
+import com.example.finalproject.ObjectModels.ITask;
+import com.example.finalproject.ObjectModels.YesNoTask;
 
 import java.util.ArrayList;
 import java.util.Random;

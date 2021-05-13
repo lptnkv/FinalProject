@@ -1,6 +1,7 @@
 package com.example.finalproject.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finalproject.Entities.Folder;
+import com.example.finalproject.Database.Entities.Folder;
 import com.example.finalproject.Fragments.FolderFragment;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
+import com.example.finalproject.databinding.FolderItemBinding;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
     private final LayoutInflater inflater;
     private final List<Folder> folders;
     RecyclerView recyclerView;
+    FolderItemBinding binding;
 
     public FolderAdapter(Context context, List<Folder> folders) {
         this.inflater = LayoutInflater.from(context);
@@ -36,13 +39,22 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
     @NonNull
     @Override
     public FolderAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.folder_item, parent, false);
+        binding = FolderItemBinding.inflate(inflater, parent, false);
+        View view = binding.getRoot();
         ViewHolder holder = new ViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = recyclerView.getChildLayoutPosition(v);
                 MainActivity.getInstance().replaceFragment(new FolderFragment(folders.get(position)));
+            }
+        });
+        binding.deleteFolderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = recyclerView.getChildLayoutPosition(view);
+                Log.d("FolderAdapter", Integer.toString(position));
+                MainActivity.getInstance().getViewModel().delete(folders.get(position));
             }
         });
         return holder;

@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.ViewModel;
 
 import android.app.Application;
 
@@ -6,10 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.finalproject.Entities.Folder;
+import com.example.finalproject.Database.Entities.Folder;
 import com.example.finalproject.Repo.FolderRepo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FolderViewModel extends AndroidViewModel {

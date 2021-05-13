@@ -1,4 +1,4 @@
-package com.example.finalproject.Models;
+package com.example.finalproject.ObjectModels;
 
 public enum Difficulty {
     Easy,

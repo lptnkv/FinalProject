@@ -1,11 +1,10 @@
-package com.example.finalproject.Entities;
+package com.example.finalproject.Database.Entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Folder {

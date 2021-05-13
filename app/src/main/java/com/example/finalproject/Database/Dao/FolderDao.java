@@ -7,7 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.finalproject.Entities.Folder;
+import com.example.finalproject.Database.Entities.Folder;
 
 import java.util.List;
 

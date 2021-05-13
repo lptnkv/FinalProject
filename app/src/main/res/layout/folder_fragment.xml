@@ -23,25 +23,32 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/addCardButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Добавить"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardsRecyclerView"
-        />
+        android:layout_marginBottom="20dp">
 
-    <Button
-        android:id="@+id/tasksButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Тренировка"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCardButton" />
+        <Button
+            android:id="@+id/addCardButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="20dp"
+            />
+
+        <Button
+            android:id="@+id/tasksButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Тренировка"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="20dp"
+            />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

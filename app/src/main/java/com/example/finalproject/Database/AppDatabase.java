@@ -8,8 +8,8 @@ import androidx.room.RoomDatabase;
 
 import com.example.finalproject.Database.Dao.CardDao;
 import com.example.finalproject.Database.Dao.FolderDao;
-import com.example.finalproject.Entities.Card;
-import com.example.finalproject.Entities.Folder;
+import com.example.finalproject.Database.Entities.Card;
+import com.example.finalproject.Database.Entities.Folder;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

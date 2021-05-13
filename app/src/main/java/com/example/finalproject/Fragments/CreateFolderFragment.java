@@ -9,7 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.finalproject.Entities.Folder;
+import com.example.finalproject.Database.Entities.Folder;
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.databinding.CreateFolderFragmentBinding;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class CreateFolderFragment extends DialogFragment {
             public void onClick(View v) {
                 String theme = binding.folderNameEditText.getText().toString();
                 Folder folder = new Folder(theme, new ArrayList<>(), "lptnkv");
-                ((FoldersFragment) getParentFragment()).mViewModel.insert(folder);
+                MainActivity.getInstance().getViewModel().insert(folder);
                 dismiss();
             }
         });

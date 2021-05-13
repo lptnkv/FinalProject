@@ -1,6 +1,7 @@
 package com.example.finalproject.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.finalproject.Entities.Folder;
-import com.example.finalproject.Fabrics.IFabric;
-import com.example.finalproject.Models.ITask;
+import com.example.finalproject.Database.Entities.Folder;
+import com.example.finalproject.ObjectModels.Fabrics.IFabric;
+import com.example.finalproject.MainActivity;
+import com.example.finalproject.ObjectModels.ITask;
 import com.example.finalproject.R;
 import com.example.finalproject.databinding.TaskFragmentBinding;
 
@@ -47,9 +49,12 @@ public class TaskFragment extends Fragment {
             indices.add(i);
         }
         Collections.shuffle(indices);
+        Log.d("TaskFragment", indices.toString());
         tasks = new ArrayList<>();
         for (int i = 0; i < this.number_of_tasks; i++){
             int randomFabricIndex = new Random().nextInt(fabrics.size());
+            Log.d("TaskFragment", Integer.toString(randomFabricIndex));
+            Log.d("TaskFragment", Integer.toString(indices.get(i)));
             ITask task = fabrics.get(randomFabricIndex).generateTask(folder, indices.get(i));
             tasks.add(task);
         }
@@ -73,11 +78,21 @@ public class TaskFragment extends Fragment {
                 }
             });
         }
+        binding.checkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentTask.validateTask(binding.checkButton.getText().toString())){
+                    number_of_right_answers++;
+                }
+                updateFragment();
+            }
+        });
         return view;
     }
 
     public void updateFragment(){
         if (currentIndex == tasks.size()){
+            MainActivity.getInstance().removeFragment(this);
             showResult();
         } else {
             String numViewText = Integer.toString(currentIndex + 1) +

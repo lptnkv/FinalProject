@@ -6,9 +6,8 @@ import androidx.lifecycle.LiveData;
 
 import com.example.finalproject.Database.AppDatabase;
 import com.example.finalproject.Database.Dao.FolderDao;
-import com.example.finalproject.Entities.Folder;
+import com.example.finalproject.Database.Entities.Folder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FolderRepo {
