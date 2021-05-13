@@ -4,52 +4,108 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.finalproject.Entities.Folder;
+import com.example.finalproject.Fabrics.IFabric;
 import com.example.finalproject.Models.ITask;
-import com.example.finalproject.databinding.TaskLayoutBinding;
+import com.example.finalproject.R;
+import com.example.finalproject.databinding.TaskFragmentBinding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 
 public class TaskFragment extends Fragment {
-    private TaskLayoutBinding binding;
+    private TaskFragmentBinding binding;
 
     ArrayList<ITask> tasks;
-    int currentTask;
+    int currentIndex;
+    ITask currentTask;
+    int number_of_tasks;
+    int number_of_right_answers;
+    private static final int[] buttons = {
+            R.id.firstButton,
+            R.id.secondButton,
+            R.id.thirdButton,
+            R.id.forthButton,
+            R.id.yesButton,
+            R.id.noButton
+    };
 
-    public TaskFragment(String theme) {
-        currentTask = 0;
+    public TaskFragment(ArrayList<IFabric> fabrics, int number_of_tasks, Folder folder) {
+        currentIndex = 0;
+        this.number_of_tasks = Math.min(folder.cards.size(), number_of_tasks);
+        ArrayList<Integer> indices = new ArrayList<>();
+        for (int i = 0; i < folder.cards.size(); i++){
+            indices.add(i);
+        }
+        Collections.shuffle(indices);
         tasks = new ArrayList<>();
+        for (int i = 0; i < this.number_of_tasks; i++){
+            int randomFabricIndex = new Random().nextInt(fabrics.size());
+            ITask task = fabrics.get(randomFabricIndex).generateTask(folder, indices.get(i));
+            tasks.add(task);
+        }
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = TaskLayoutBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        binding = TaskFragmentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        updateFragment();
+        for (int i = 0; i < buttons.length; i++){
+            Button button = view.findViewById(buttons[i]);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (currentTask.validateTask(button.getText().toString())){
+                        number_of_right_answers++;
+                    }
+                    updateFragment();
+                }
+            });
+        }
+        return view;
     }
 
     public void updateFragment(){
-        currentTask++;
-        if (currentTask  == tasks.size()){
+        if (currentIndex == tasks.size()){
             showResult();
         } else {
-            switch (tasks.get(currentTask).type){
-                case Pair:{
-
+            String numViewText = Integer.toString(currentIndex + 1) +
+                    " / " + Integer.toString(this.number_of_tasks);
+            binding.numView.setText(numViewText);
+            currentTask = tasks.get(currentIndex);
+            binding.taskTextView.setText(currentTask.text);
+            switch (currentTask.type){
+                case YesNo:{
+                    binding.yesNoLayout.setVisibility(View.VISIBLE);
+                    binding.chooseLayout.setVisibility(View.GONE);
+                    binding.writeLayout.setVisibility(View.GONE);
                     break;
                 }
                 case Write:{
-
+                    binding.yesNoLayout.setVisibility(View.GONE);
+                    binding.chooseLayout.setVisibility(View.GONE);
+                    binding.writeLayout.setVisibility(View.VISIBLE);
                     break;
                 }
                 case Choose:{
-
+                    binding.yesNoLayout.setVisibility(View.GONE);
+                    binding.chooseLayout.setVisibility(View.VISIBLE);
+                    binding.writeLayout.setVisibility(View.GONE);
+                    binding.firstButton.setText(currentTask.options.get(0));
+                    binding.firstButton.setText(currentTask.options.get(1));
+                    binding.firstButton.setText(currentTask.options.get(2));
+                    binding.firstButton.setText(currentTask.options.get(3));
                     break;
                 }
             }
@@ -57,6 +113,8 @@ public class TaskFragment extends Fragment {
     }
 
     public void showResult(){
-        Toast.makeText(getContext(), "The end", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Правильных ответов: " +
+                Integer.toString(number_of_right_answers),
+                Toast.LENGTH_SHORT).show();
     }
 }

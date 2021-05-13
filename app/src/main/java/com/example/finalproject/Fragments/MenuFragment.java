@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.databinding.MenuFragmentBinding;
 
 public class MenuFragment extends Fragment {
@@ -19,6 +19,12 @@ public class MenuFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = MenuFragmentBinding.inflate(inflater, container, false);
+        binding.foldersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.getInstance().replaceFragment(new FoldersFragment());
+            }
+        });
         return binding.getRoot();
     }
 

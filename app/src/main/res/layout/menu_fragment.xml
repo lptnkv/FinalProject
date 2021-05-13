@@ -10,9 +10,9 @@
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:id="@+id/cardsButton"
+            android:id="@+id/foldersButton"
             android:layout_gravity="center"
-            android:text="Карточки"
+            android:text="Папки"
             />
         <Button
             android:layout_height="wrap_content"

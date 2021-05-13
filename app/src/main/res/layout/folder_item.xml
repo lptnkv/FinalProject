@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/themeView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Название: " />
+
+        <TextView
+            android:id="@+id/creatorView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Создатель: " />
+
+        <TextView
+            android:id="@+id/amountView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Количество слов: " />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

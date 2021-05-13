@@ -1,7 +1,7 @@
 package com.example.finalproject.Models;
 
 public enum  Type {
-    Pair,
+    YesNo,
     Write,
     Choose
 }
