@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:textSize="32dp"
         android:text="Выбор заданий"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,18 +31,21 @@
             android:id="@+id/writeTaskCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="25dp"
             android:text="Написание" />
 
         <CheckBox
             android:id="@+id/yesNoTaskCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="25dp"
             android:text="Да - Нет" />
 
         <CheckBox
             android:id="@+id/chooseTaskCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="25dp"
             android:text="Выбор перевода" />
     </LinearLayout>
 
@@ -52,6 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="40dp"
+        android:textSize="32dp"
         android:text="Начать"
         android:id="@+id/startTaskButton"
         />

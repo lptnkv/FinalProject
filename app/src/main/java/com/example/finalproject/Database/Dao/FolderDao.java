@@ -12,7 +12,7 @@ import com.example.finalproject.Database.Entities.Folder;
 import java.util.List;
 
 @Dao
-public abstract class   FolderDao {
+public abstract class FolderDao {
     @Query("SELECT * FROM folder")
     public abstract LiveData<List<Folder>> getAll();
 

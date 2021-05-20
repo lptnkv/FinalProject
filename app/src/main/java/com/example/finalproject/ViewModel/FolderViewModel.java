@@ -13,12 +13,12 @@ import java.util.List;
 
 public class FolderViewModel extends AndroidViewModel {
     private FolderRepo foldersRepo;
-    private LiveData<List<Folder>> allFolders;
+    private LiveData<List<Folder>> savedFolders;
 
     public FolderViewModel(@NonNull Application application) {
         super(application);
-        foldersRepo = new FolderRepo(application);
-        allFolders = foldersRepo.getAllFolders();
+        foldersRepo = FolderRepo.getInstance(application.getApplicationContext());
+        savedFolders = foldersRepo.getSavedFolders();
     }
 
     public void insert(Folder folder) {
@@ -31,7 +31,7 @@ public class FolderViewModel extends AndroidViewModel {
         foldersRepo.delete(folder);
     }
 
-    public LiveData<List<Folder>> getAllNotes() {
-        return allFolders;
+    public LiveData<List<Folder>> getSavedFolders() {
+        return savedFolders;
     }
 }

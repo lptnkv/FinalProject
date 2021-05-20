@@ -8,17 +8,20 @@ import androidx.room.RoomDatabase;
 
 import com.example.finalproject.Database.Dao.CardDao;
 import com.example.finalproject.Database.Dao.FolderDao;
+import com.example.finalproject.Database.Dao.UserDao;
 import com.example.finalproject.Database.Entities.Card;
 import com.example.finalproject.Database.Entities.Folder;
+import com.example.finalproject.Database.Entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {Folder.class, Card.class}, version = 1)
+@Database(entities = {Folder.class, Card.class, User.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract CardDao cardDao();
     public abstract FolderDao folderDao();
+    public abstract UserDao userDao();
 
     private static final int NUMBER_OF_THREADS = 4;
 

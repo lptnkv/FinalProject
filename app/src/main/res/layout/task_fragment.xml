@@ -14,6 +14,7 @@
             android:id="@+id/numView"
             android:gravity="center"
             android:layout_marginTop="20dp"
+            android:textSize="30dp"
             android:text="Номер задания"
             />
         <TextView
@@ -22,6 +23,7 @@
             android:id="@+id/taskTextView"
             android:gravity="center"
             android:layout_marginTop="20dp"
+            android:textSize="30dp"
             android:text="Тут текст задания"
             />
     </LinearLayout>

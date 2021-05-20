@@ -57,7 +57,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
                 int position = recyclerView.getChildLayoutPosition(view);
                 folder.cards.remove(position);
                 notifyItemRemoved(position);
-                MainActivity.getInstance().getViewModel().update(folder);
+                MainActivity.getInstance().getFolderViewModel().update(folder);
             }
         });
 

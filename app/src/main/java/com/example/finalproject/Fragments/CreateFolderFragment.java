@@ -26,8 +26,8 @@ public class CreateFolderFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 String theme = binding.folderNameEditText.getText().toString();
-                Folder folder = new Folder(theme, new ArrayList<>(), "lptnkv");
-                MainActivity.getInstance().getViewModel().insert(folder);
+                Folder folder = new Folder(theme, new ArrayList<>(), MainActivity.getInstance().getCurrentUser().name);
+                MainActivity.getInstance().getFolderViewModel().insert(folder);
                 dismiss();
             }
         });

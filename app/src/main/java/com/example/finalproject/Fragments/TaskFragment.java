@@ -65,7 +65,6 @@ public class TaskFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = TaskFragmentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        updateFragment();
         for (int i = 0; i < buttons.length; i++){
             Button button = view.findViewById(buttons[i]);
             button.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +73,7 @@ public class TaskFragment extends Fragment {
                     if (currentTask.validateTask(button.getText().toString())){
                         number_of_right_answers++;
                     }
+                    currentIndex++;
                     updateFragment();
                 }
             });
@@ -81,19 +81,27 @@ public class TaskFragment extends Fragment {
         binding.checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currentTask.validateTask(binding.checkButton.getText().toString())){
+                if (currentTask.validateTask(binding.writeEdit.getText().toString())){
                     number_of_right_answers++;
                 }
+                currentIndex++;
                 updateFragment();
             }
         });
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        updateFragment();
+    }
+
     public void updateFragment(){
         if (currentIndex == tasks.size()){
-            MainActivity.getInstance().removeFragment(this);
-            showResult();
+            TaskResultsFragment resultFragment = new TaskResultsFragment(number_of_tasks, number_of_right_answers);
+            MainActivity.getInstance().removeTaskFragment(this);
+            MainActivity.getInstance().replaceFragment(resultFragment);
         } else {
             String numViewText = Integer.toString(currentIndex + 1) +
                     " / " + Integer.toString(this.number_of_tasks);
@@ -108,6 +116,7 @@ public class TaskFragment extends Fragment {
                     break;
                 }
                 case Write:{
+                    binding.writeEdit.getText().clear();
                     binding.yesNoLayout.setVisibility(View.GONE);
                     binding.chooseLayout.setVisibility(View.GONE);
                     binding.writeLayout.setVisibility(View.VISIBLE);
@@ -118,9 +127,9 @@ public class TaskFragment extends Fragment {
                     binding.chooseLayout.setVisibility(View.VISIBLE);
                     binding.writeLayout.setVisibility(View.GONE);
                     binding.firstButton.setText(currentTask.options.get(0));
-                    binding.firstButton.setText(currentTask.options.get(1));
-                    binding.firstButton.setText(currentTask.options.get(2));
-                    binding.firstButton.setText(currentTask.options.get(3));
+                    binding.secondButton.setText(currentTask.options.get(1));
+                    binding.thirdButton.setText(currentTask.options.get(2));
+                    binding.forthButton.setText(currentTask.options.get(3));
                     break;
                 }
             }

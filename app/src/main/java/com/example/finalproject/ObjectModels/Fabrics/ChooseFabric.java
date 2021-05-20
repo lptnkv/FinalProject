@@ -20,9 +20,10 @@ public class ChooseFabric implements IFabric {
         for (int i = 0; i < folder.cards.size(); i++){
             indices.add(i);
         }
+        indices.remove(ind);
         Collections.shuffle(indices);
         for (int i = 0; i < 3; i++){
-            options.add(folder.cards.get(i).eng_word);
+            options.add(folder.cards.get(indices.get(i)).eng_word);
         }
         Collections.shuffle(options);
         return new ChooseTask(options, answer, text);

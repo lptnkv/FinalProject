@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalproject.Adapters.CardAdapter;
 import com.example.finalproject.Database.Entities.Folder;
 import com.example.finalproject.MainActivity;
+import com.example.finalproject.Network.Network;
 import com.example.finalproject.databinding.FolderFragmentBinding;
 
 public class FolderFragment extends Fragment {
@@ -32,6 +33,7 @@ public class FolderFragment extends Fragment {
         recyclerView = binding.cardsRecyclerView;
         adapter = new CardAdapter(getContext(), folder);
         recyclerView.setAdapter(adapter);
+        binding.themeView.setText(folder.theme);
         binding.addCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +47,18 @@ public class FolderFragment extends Fragment {
                 MainActivity.getInstance().replaceFragment(new SelectTaskFragment(folder));
             }
         });
+
+
+        binding.uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity
+                        .getInstance()
+                        .getCloudFolderViewModel().uploadFolder(folder);
+            }
+        });
+
+
         return binding.getRoot();
     }
 }

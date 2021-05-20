@@ -22,9 +22,9 @@ public class YesNoFabric implements IFabric {
             text = card.rus_word + " - " + card.eng_word;
             answer = "Да";
         } else {
-            int rand_int = random.nextInt();
+            int rand_int = random.nextInt(folder.cards.size());
             while (rand_int == ind){
-                rand_int = random.nextInt();
+                rand_int = random.nextInt(folder.cards.size());
             }
             text = card.rus_word + " - " + folder.cards.get(rand_int).eng_word;
             answer = "Нет";

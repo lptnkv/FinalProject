@@ -33,7 +33,7 @@ public class AddCardDialog extends DialogFragment {
                 String rusWord = binding.rusWordView.getText().toString();
                 String engWord = binding.engWordView.getText().toString();
                 folder.cards.add(new Card(rusWord, engWord));
-                MainActivity.getInstance().getViewModel().update(folder);
+                MainActivity.getInstance().getFolderViewModel().update(folder);
                 int size = ((FolderFragment) getParentFragment()).folder.cards.size();
                 ((FolderFragment) getParentFragment()).adapter.notifyItemInserted(size - 1);
                 dismiss();
