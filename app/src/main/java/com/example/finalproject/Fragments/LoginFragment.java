@@ -34,15 +34,6 @@ public class LoginFragment extends Fragment {
                     AppDatabase.databaseWriteExecutor.execute(()->{
                             AppDatabase.getDatabase(getContext()).userDao().insert(currentUser);
                     });
-                    /*
-                    List<User> result = AppDatabase.getDatabase(getContext()).userDao().getByName(nickname);
-                    if (result.isEmpty()) {
-                        AppDatabase.getDatabase(getContext()).userDao().insert(new User(nickname));
-                    } else {
-                        User user = result.get(0);
-                        AppDatabase.getDatabase(getContext()).userDao().updateActiveUser(user);
-                    }
-                    */
                     MainActivity.getInstance().setCurrentUser(currentUser);
                     MainActivity.getInstance().login();
                 } else {

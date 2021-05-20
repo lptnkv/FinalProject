@@ -30,13 +30,6 @@ public class CloudFoldersFragment extends Fragment {
     private RecyclerView recyclerView;
     public CloudFolderViewModel viewModel;
 
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.d("Cloud Folders Fragment", "Cloud Folders created");
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

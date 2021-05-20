@@ -70,20 +70,6 @@ public class Network {
         });
     }
 
-
-    public void postFolder(Folder folder, Handler handler){
-        api.postFolder(folder).enqueue(new Callback<Folder>() {
-            @Override
-            public void onResponse(Call<Folder> call, Response<Folder> response) {
-                getFolders(handler);
-            }
-
-            @Override
-            public void onFailure(Call<Folder> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-    }
     public void postFolder(Folder folder){
         api.postFolder(folder).enqueue(new Callback<Folder>() {
             @Override
@@ -97,33 +83,6 @@ public class Network {
         });
     }
 
-    public void updateFolder(Folder folder, Handler handler){
-        api.updateFolder(folder.getId(), folder).enqueue(new Callback<Folder>() {
-            @Override
-            public void onResponse(Call<Folder> call, Response<Folder> response) {
-                getFolders(handler);
-            }
-
-            @Override
-            public void onFailure(Call<Folder> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-    }
-
-    public void deleteFolder(Folder folder, Handler handler){
-        api.deleteFolder(folder.getId()).enqueue(new Callback<Folder>() {
-            @Override
-            public void onResponse(Call<Folder> call, Response<Folder> response) {
-                getFolders(handler);
-            }
-
-            @Override
-            public void onFailure(Call<Folder> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-    }
 
     public void deleteFolder(Folder folder){
         api.deleteFolder(folder.getId()).enqueue(new Callback<Folder>() {
