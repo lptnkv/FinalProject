@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.Adapters.FolderAdapter;
 import com.example.finalproject.Database.Entities.Folder;
 import com.example.finalproject.MainActivity;
+import com.example.finalproject.R;
 import com.example.finalproject.ViewModel.FolderViewModel;
 import com.example.finalproject.databinding.FoldersFragmentBinding;
 
@@ -29,6 +31,9 @@ public class FoldersFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FoldersFragmentBinding.inflate(inflater, container, false);
         RecyclerView recyclerView = binding.foldersRecyclerView;
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        dividerItemDecoration.setDrawable(getResources().getDrawable(R.drawable.divider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
         binding.createFolderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,14 +16,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:text="Сохраненные папки"
-                    android:textSize="30dp" />
+                    android:textSize="30dp"
+                    android:background="#FA6D6D"
+                    android:textColor="@color/white"
+                    />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:background="#FFFFFF"
                     android:id="@+id/foldersRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="550dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 

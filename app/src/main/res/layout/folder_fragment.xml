@@ -8,11 +8,13 @@
 
     <TextView
         android:id="@+id/themeView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Карточки"
         android:textSize="30dp"
+        android:background="#FA6D6D"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +23,7 @@
         android:id="@+id/uploadButton"
         android:layout_width="50dp"
         android:layout_height="40dp"
-        android:background="@drawable/upload_icon"
+        android:background="@drawable/upload_icon_transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
